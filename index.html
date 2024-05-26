@@ -77,6 +77,9 @@
         }
       }
       @media (min-width: 769px) {
+        .w-lg-50 {
+          width: 50%;
+        }
         li .active,
         li a:hover {
           position: relative;
@@ -85,6 +88,9 @@
           padding-top: 30px;
           /* line-height: ; */
           background-color: black;
+        }
+        li .active {
+          font-size: 1.5rem;
         }
         .w-sm-100 {
           width: 80%;
@@ -116,7 +122,7 @@
         <span class="d-none d-sm-inline"> mail@domain.com </span>
       </div>
     </div>
-    <header class="d-flex flex-column justify-content-between vh-100">
+    <header class="d-flex flex-column vh-100">
       <nav class="z-1 navbar navbar-expand-lg">
         <div class="fs-4 container-fluid">
           <span class="fs-3 navbar-brand fw-bold text-white"> Guarder</span>
@@ -141,31 +147,57 @@
               style="--bs-scroll-height: 100px"
             >
               <li class="nav-item">
-                <a class="nav-link active" aria-current="true" href="#">Home</a>
+                <a
+                  class="nav-link active bg-change"
+                  aria-current="true"
+                  href="#"
+                  onclick="home(this)"
+                  >HOME</a
+                >
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#about">ABOUT</a>
+                <a
+                  class="nav-link bg-change"
+                  onclick="home(this)"
+                  href="#1about"
+                  >ABOUT</a
+                >
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#SERVICES">SERVICES</a>
+                <a
+                  class="nav-link bg-change"
+                  onclick="home(this)"
+                  href="#1SERVICES"
+                  >SERVICES</a
+                >
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#GUARDS">GUARDS</a>
+                <a
+                  class="nav-link bg-change"
+                  onclick="home(this)"
+                  href="#1GUARDS"
+                  >GUARDS</a
+                >
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#CONTACT">CONTACT US</a>
+                <a
+                  class="nav-link bg-change"
+                  onclick="home(this)"
+                  href="#1CONTACT"
+                  >CONTACT US</a
+                >
               </li>
             </ul>
           </div>
         </div>
       </nav>
 
-      <div class="container-fluid text-light w-75 z-3 mb-5">
+      <div class="container-fluid text-light w-75 z-3 mt-5 hed">
         <h1 class="fw-bold fs-2 fs-sm-2 my-3 mt-5">
           YOUR SAFTEY <br />
           <span class="text-warning"> OUR RESPONSIBILITY </span>
         </h1>
-        <p class="fs-4">
+        <p class="fs-4 w-lg-50">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium
           omnis corporis officiis rem perspiciatis veritatis numquam cupiditate
           nisi nihil harum sunt quo!
@@ -339,30 +371,6 @@
               </div>
             </div>
           </div>
-          <button
-            class="carousel-control-prev"
-            type="button"
-            data-bs-target="#carouselExampleCaptions"
-            data-bs-slide="prev"
-          >
-            <span
-              class="carousel-control-prev-icon bg-black rounded z-1"
-              aria-hidden="true"
-            ></span>
-            <span class="visually-hidden">Previous</span>
-          </button>
-          <button
-            class="carousel-control-next"
-            type="button"
-            data-bs-target="#carouselExampleCaptions"
-            data-bs-slide="next"
-          >
-            <span
-              class="carousel-control-next-icon bg-black rounded z-1"
-              aria-hidden="true"
-            ></span>
-            <span class="visually-hidden">Next</span>
-          </button>
         </div>
         <!-- class="row row-cols-1 row-cols-md-3 g-4 m-2 m-sm-5 justify-content-around" -->
       </section>
@@ -404,16 +412,18 @@
           </button>
         </form>
       </section>
-
-      <section class="container-fluid py-5 text-center" id="GUARDS">
+      <!-- Section  -->
+      <section class="container-fluid py-5 text-center mb-5" id="GUARDS">
         <h2 class="my-4 fw-bold">
           OUR <span class="border-bottom border-4 border-warning">GU</span>ARDS
         </h2>
-        <p>
-          Lorem ipsum dolor sit amet, non odio tincidunt ut ante, lorem a
-          euismod suspendisse vel, sed quam nulla mauris iaculis. Erat eget
-          vitae malesuada, tortor tincidunt porta lorem lectus.
-        </p>
+        <div class="d-flex justify-content-center">
+          <p class="fs-5 w-50">
+            Lorem ipsum dolor sit amet, non odio tincidunt ut ante, lorem a
+            euismod suspendisse vel, sed quam nulla mauris iaculis. Erat eget
+            vitae malesuada, tortor tincidunt porta lorem lectus.
+          </p>
+        </div>
         <br />
         <div
           class="row row-cols-1 row-cols-md-3 g-4 m-2 m-sm-5 justify-content-around"
@@ -507,4 +517,20 @@
     integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
     crossorigin="anonymous"
   ></script>
+  <script>
+    function home(arg) {
+      let x = document.getElementsByClassName("bg-change");
+
+      for (let index = 0; index < x.length; index++) {
+        x[index].style.backgroundColor = "transparent";
+      }
+      arg.style.backgroundColor = "black";
+      arg.style.paddingTop = "30px";
+      arg.style.position = "relative";
+      arg.style.top = "-20px";
+      arg.style.height = "max-content";
+      // document.getElementsByClassName("hed")[0].style.display = "none";
+      // document.getElementsByTagName("header").style.height = "50vh!importent";
+    }
+  </script>
 </html>
