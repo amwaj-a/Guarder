@@ -62,7 +62,7 @@
         left: 0;
         background-color: rgba(0, 0, 0, 0.4);
       }
-      .GUARDS {
+      .GUARDSCard {
         background-color: rgba(0, 0, 0, 0.6);
       }
       @media (max-width: 768px) {
@@ -156,10 +156,7 @@
                 >
               </li>
               <li class="nav-item">
-                <a
-                  class="nav-link bg-change"
-                  onclick="home(this)"
-                  href="#1about"
+                <a class="nav-link bg-change" onclick="home(this)" href="#about"
                   >ABOUT</a
                 >
               </li>
@@ -167,7 +164,7 @@
                 <a
                   class="nav-link bg-change"
                   onclick="home(this)"
-                  href="#1SERVICES"
+                  href="#SERVICES"
                   >SERVICES</a
                 >
               </li>
@@ -175,7 +172,7 @@
                 <a
                   class="nav-link bg-change"
                   onclick="home(this)"
-                  href="#1GUARDS"
+                  href="#GUARDS"
                   >GUARDS</a
                 >
               </li>
@@ -183,7 +180,7 @@
                 <a
                   class="nav-link bg-change"
                   onclick="home(this)"
-                  href="#1CONTACT"
+                  href="#CONTACT"
                   >CONTACT US</a
                 >
               </li>
@@ -309,7 +306,7 @@
       </section>
 
       <!-- Section  -->
-      <section class="container-fluid py-5 text-center">
+      <section class="container-fluid py-5 text-center" id="section">
         <h2 class="my-4 fw-bold">
           WHAT IS SA<span class="border-bottom border-4 border-warning"
             >YS</span
@@ -377,13 +374,17 @@
 
       <!-- Section concat -->
 
-      <section class="bg-img py-5 container-fluid text-center" id="CONTACT">
+      <section
+        class="bg-img py-5 d-flex flex-column align-items-center container-fluid text-center align-content-center"
+        id="CONTACT"
+      >
         <h2 class="my-4 text-white z-1 position-relative">
           GET I<span class="border-bottom border-4 border-warning">N T</span
           >OUCH
         </h2>
         <form
-          class="m-sm-5 z-2 position-relative d-flex flex-column align-items-center"
+          style="width: 25%"
+          class="m-sm-5 z-2 position-relative d-flex flex-column"
         >
           <input
             type="text"
@@ -432,13 +433,13 @@
             <div class="card position-relative">
               <img src="t1.jpg" alt="" />
 
-              <p
-                class="m-0 pt-4 fs-4 text-light position-absolute bottom-0 w-100 h-25 GUARDS"
+              <div
+                class="m-0 pt-4 pb-4 fs-4 text-light position-absolute bottom-0 w-100 GUARDSCard"
               >
                 Martin Anderson
                 <br />
                 <span class="fs-5"> supervisor</span>
-              </p>
+              </div>
             </div>
           </div>
 
@@ -447,7 +448,7 @@
               <img src="t2.jpg" alt="" />
 
               <p
-                class="m-0 pt-4 fs-4 text-light position-absolute bottom-0 w-100 h-25 GUARDS"
+                class="m-0 pt-4 fs-4 text-light position-absolute bottom-0 w-100 pb-4 GUARDSCard"
               >
                 Denny Butler <br />
                 <span class="fs-5"> supervisor </span>
@@ -459,7 +460,7 @@
               <img src="t3.jpg" alt="" />
 
               <p
-                class="m-0 pt-4 fs-4 text-light position-absolute bottom-0 w-100 h-25 GUARDS"
+                class="m-0 pt-4 fs-4 text-light position-absolute bottom-0 w-100 pb-4 GUARDSCard"
               >
                 Nathan Mcpherson
                 <br />
@@ -471,7 +472,7 @@
       </section>
     </main>
     <footer class="bg-black pt-5 text-light text-center">
-      <div class="row container">
+      <div class="row container-fluid">
         <div class="col text-center">
           <h3 class="fw-bold">Guarder</h3>
           <p class=" ">
@@ -496,6 +497,13 @@
             <span> mail@domain.com </span>
           </div>
         </div>
+        <div class="col text-center">
+          <h3 class="fw-bold">Guarder</h3>
+          <p class=" ">
+            dolor sit amet, consectetur magna aliqua. Ut enim ad minim veniam,
+            quisdotempor incididunt r
+          </p>
+        </div>
         <div class="col">
           <h3>NewsLetter</h3>
           <input
@@ -518,9 +526,48 @@
     crossorigin="anonymous"
   ></script>
   <script>
+    let about = document.getElementById("about");
+    let server = document.getElementById("SERVICES");
+    let section = document.getElementById("section");
+    let CONTACT = document.getElementById("CONTACT");
+    let GUARDS = document.getElementById("GUARDS");
+    let GUARDSCard = document.querySelectorAll(".GUARDSCard");
+    // server.addEventListener("");
+    for (let index = 0; index < GUARDSCard.length; index++) {
+      GUARDSCard[index].addEventListener("mouseover", () => {
+        GUARDSCard[index].style.height = "40vh";
+        let id = GUARDSCard[index].getAttribute("id");
+        if (id != `card ${index}`) {
+          GUARDSCard[index].setAttribute("id", `card ${index}`);
+          GUARDSCard[index].insertAdjacentHTML(
+            "beforeend",
+            ` <p>
+     Voluptate fugiat veritatis illum at officia,
+      atque nostrum, earum debitis corporis dolor numquam!
+          
+          </p> `
+          );
+        }
+      });
+      GUARDSCard[index].addEventListener("mouseout", () => {
+        GUARDSCard[index].style.height = "11vh";
+
+        GUARDSCard[index].style.overflow = "hidden";
+
+        // console.log(GUARDSCard[index]);
+      });
+    }
+
     function home(arg) {
       let x = document.getElementsByClassName("bg-change");
-
+      console.log(arg.href == `http://127.0.0.1:5500/index.html#1about`);
+      if (arg.href == "http://127.0.0.1:5500/index.html#1about") {
+        server.style.display = "none";
+        section.style.display = "none";
+        CONTACT.style.display = "none";
+        GUARDS.style.display = "none";
+      } else {
+      }
       for (let index = 0; index < x.length; index++) {
         x[index].style.backgroundColor = "transparent";
       }
@@ -529,8 +576,6 @@
       arg.style.position = "relative";
       arg.style.top = "-20px";
       arg.style.height = "max-content";
-      // document.getElementsByClassName("hed")[0].style.display = "none";
-      // document.getElementsByTagName("header").style.height = "50vh!importent";
     }
   </script>
 </html>
