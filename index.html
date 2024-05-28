@@ -541,7 +541,7 @@
           GUARDSCard[index].setAttribute("id", `card ${index}`);
           GUARDSCard[index].insertAdjacentHTML(
             "beforeend",
-            ` <p>
+            ` <p id=p${index}>
      Voluptate fugiat veritatis illum at officia,
       atque nostrum, earum debitis corporis dolor numquam!
           
@@ -550,10 +550,11 @@
         }
       });
       GUARDSCard[index].addEventListener("mouseout", () => {
-        GUARDSCard[index].style.height = "11vh";
+        GUARDSCard[index].style.height = "15vh";
 
         GUARDSCard[index].style.overflow = "hidden";
-
+        let removep = document.getElementById(`p${index}`);
+        GUARDSCard[index].removeChild(removep);
         // console.log(GUARDSCard[index]);
       });
     }
